@@ -23,7 +23,7 @@ public class LoginTest extends Utils {
     }
 
     //检查登录功能---成功登录
-    public void LoginSuccess() throws IOException {
+    public void LoginSuccess() throws IOException, InterruptedException {
         driver.findElement(By.cssSelector("#")).clear();
         driver.findElement(By.cssSelector("#")).clear();
 
@@ -45,7 +45,7 @@ public class LoginTest extends Utils {
 
     /*检查登录功能--登录失败
     * */
-    public void LoginFail() throws IOException {
+    public void LoginFail() throws IOException, InterruptedException {
         //有两种方法可以确保输入框没有文字，一种使通过clear(),另一种是刷新页面
         //此处采用第二种
         driver.navigate().refresh();
@@ -57,6 +57,7 @@ public class LoginTest extends Utils {
         String res = driver.findElement(By.cssSelector("")).getText();
         getScreenShot(getClass().getName());
         assert res.equals("用户名或密码错误！");
+
     }
 
 }

@@ -43,7 +43,7 @@ public class Utils {
     }
 
     //屏幕截图
-    public  void getScreenShot(String str) throws IOException {
+    public  void getScreenShot(String str) throws IOException, InterruptedException {
         //     ./src/test/image/
         //                     /2024-07-17/
         //                                /test01-17453010.png
@@ -57,9 +57,13 @@ public class Utils {
         String dirTime = sim1.format(System.currentTimeMillis());
         String fileTime = sim2.format(System.currentTimeMillis());
         //./src/test/image/2024-07-17/test01-17453020.png
+        //这块文件的代码是没问题的
         String filename = "./src/test/image/"+dirTime+"/"+str+"-"+fileTime+".png";
+        System.out.println(filename);
+        Thread.sleep(3000);
+        //File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        //srcFile 放到指定位置
+//        //srcFile 放到指定位置
         FileUtils.copyFile(srcFile,new File(filename));
     }
 
